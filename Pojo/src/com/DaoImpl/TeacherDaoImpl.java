@@ -1,39 +1,63 @@
 package com.DaoImpl;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Scanner;
 import com.pojo.Teacherpojo;;
 public class TeacherDaoImpl {
 
 private Scanner sc;
-private ObjectOutputStream oos;
-
+private BufferedWriter bw;
 public void addTeacher() {
 	Teacherpojo tp=new Teacherpojo();
 	sc = new Scanner(System.in);
 
-	 FileOutputStream fos=null;
+	FileWriter fw=null;
 		File f=new File("UV1.txt");
 		try {
-			 fos=new FileOutputStream(f);
-			oos = new ObjectOutputStream(fos);
+			 fw=new FileWriter(f);
+			bw = new BufferedWriter(fw);
 			System.out.println("Enter Teacher name");
 			tp.setTeacher_name(sc.next());
 			System.out.println("Enter Teacher Subject");
 			tp.setSubject(sc.next());
 			
-			oos.writeObject(tp);
+			bw.write(tp.toString());
+			bw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally {
-			if(fos!=null)
+			if(fw!=null)
 			{
 				try {
-					fos.close();
+					fw.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		FileReader  fr=null;
+		try {
+			try {
+				fr=new FileReader ("UV1.txt");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(tp.toString());
+			}
+			
+		finally {
+			if(fr!=null)
+			{
+				try {
+					fr.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
