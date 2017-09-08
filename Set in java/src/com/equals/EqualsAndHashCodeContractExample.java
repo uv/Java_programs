@@ -50,6 +50,7 @@ public class EqualsAndHashCodeContractExample {
 		hs.add(std3);
 		hs.add(std2);
 		hs.add(std1);
+		System.out.println(hs);
 	}
 
 }
