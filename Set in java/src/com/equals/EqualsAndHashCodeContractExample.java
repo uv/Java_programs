@@ -1,6 +1,7 @@
 package com.equals;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
 class Student1{
 	private int id;
@@ -16,7 +17,7 @@ class Student1{
 		return "Student1 [id=" + id + ", name=" + name + "]";
 	}
 
-	public boolean equals(Object obj) {
+public boolean equals(Object obj) {
 		if(obj instanceof Student1) {
 			Student1 st=(Student1) obj;
 			return this.id==st.id;
@@ -44,13 +45,20 @@ public class EqualsAndHashCodeContractExample {
 		Student1 std7=new Student1(6,"uv");
 		HashSet hs=new HashSet<Student1>();
 		hs.add(std7);
+		hs.add(null);
 		hs.add(std6);
 		hs.add(std5);
 		hs.add(std4);
+		hs.add("raj");
 		hs.add(std3);
 		hs.add(std2);
 		hs.add(std1);
-		System.out.println(hs);
+		hs.add(std);
+		 Iterator<Student1> itr=hs.iterator();  
+		  while(itr.hasNext()){  
+		   System.out.println(itr.next());
+		//System.out.println(hs);
+		  }
 	}
 
 }
