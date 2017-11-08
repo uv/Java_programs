@@ -1,0 +1,7 @@
+<web-app>
+ <display-name>Welcome To UV's World</display-name>
+ <welcome-file-list>
+ <welcome-file>String.html</welcome-file>
+ </welcome-file-list>
+
+</web-app>
